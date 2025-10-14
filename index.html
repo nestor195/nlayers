@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo NLayers</title>
+    <style>
+        #lienzo {
+            width: 800px;
+            height: 600px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="lienzo"></div>
+    <script src="./js/nlayers.js"></script>
+    <script>
+        const capaDeMapa = nl.layer.Tile({
+            source: nl.source.Map({
+                img:'./img/mapa.jpg',
+                division:[5,5], // 5x5 teselas
+            })
+        });
+
+        const vista = nl.View({
+            center: [1, 1], // tesela enfocada
+            zoom: 1 // zoom inicial (1: sin zoom)
+        });
+
+        const lienzo = new nl.Mapa({
+            target: 'lienzo',
+            layers: [capaDeMapa],
+            view: vista
+        });
+    </script>
+</body>
+</html>
